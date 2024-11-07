@@ -46,6 +46,7 @@ final class ConfigureCommand extends Command
             ->addOption('no-behat', mode: InputOption::VALUE_NONE, description: 'Removes Behat-related files and packages')
             ->addOption('no-github-actions', mode: InputOption::VALUE_NONE, description: 'Does not create an example GitHub Actions workflow file')
             ->addOption('no-scaffold', mode: InputOption::VALUE_NONE, description: 'Removes all example files like Controllers, defined services and routes, etc.')
+            ->addOption('no-assets', mode: InputOption::VALUE_NONE, description: 'Does not build assets')
             ->addOption('database-engine', mode: InputOption::VALUE_REQUIRED)
             ->addOption('database-user', mode: InputOption::VALUE_REQUIRED)
             ->addOption('database-password', mode: InputOption::VALUE_REQUIRED)
@@ -173,6 +174,11 @@ final class ConfigureCommand extends Command
         if (false === $input->getOption('no-scaffold')) {
             $useScaffold = $io->confirm('Would you like to keep scaffolded files?');
             $input->setOption('no-scaffold', !$useScaffold);
+        }
+
+        if (false === $input->getOption('no-assets')) {
+            $buildAssets = $io->confirm('Would you like to build assets?');
+            $input->setOption('no-assets', !$buildAssets);
         }
 
         $io->section('Development environment configuration');

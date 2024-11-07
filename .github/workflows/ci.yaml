@@ -51,7 +51,7 @@ jobs:
                 run: composer update
 
             -   name: Configure plugin
-                run: composer configure -- Sylius ExamplePlugin sylius/example-plugin "Our example plugin for Sylius" -n --no-docker --no-psalm --no-phpstan --no-ecs --no-phpunit --no-phpspec --no-behat --no-scaffold --database-engine=mysql --database-user=root --database-password=root --database-name=sylius --database-host=127.0.0.1 --database-port=3306
+                run: composer configure -- Sylius ExamplePlugin sylius/example-plugin "Our example plugin for Sylius" -n --no-docker --no-psalm --no-phpstan --no-ecs --no-phpunit --no-phpspec --no-behat --no-scaffold --no-assets --database-engine=mysql --database-user=root --database-password=root --database-name=sylius --database-host=127.0.0.1 --database-port=3306
 
             -   name: Setup plugin
                 run: make setup

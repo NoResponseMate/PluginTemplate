@@ -20,6 +20,7 @@ final class PluginConfiguration
         private bool $useBehat,
         private bool $useGitHubActions,
         private bool $keepScaffoldedFiles,
+        private bool $buildAssets,
         private ?string $databaseEngine = null,
         private ?string $databaseUser = null,
         private ?string $databasePassword = null,
@@ -89,6 +90,11 @@ final class PluginConfiguration
         return $this->useGitHubActions;
     }
 
+    public function buildAssets(): bool
+    {
+        return $this->buildAssets;
+    }
+
     public function removeScaffoldedFiles(): bool
     {
         return !$this->keepScaffoldedFiles;
@@ -132,6 +138,7 @@ final class PluginConfiguration
             !$data['no-behat'],
             !$data['no-github-actions'],
             !$data['no-scaffold'],
+            !$data['no-assets'],
             $data['database-engine'],
             $data['database-user'],
             $data['database-password'],
