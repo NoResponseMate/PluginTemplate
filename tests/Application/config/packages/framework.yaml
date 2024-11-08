@@ -7,3 +7,4 @@ framework:
     serializer:
         mapping:
             paths: []
+    http_method_override: true
