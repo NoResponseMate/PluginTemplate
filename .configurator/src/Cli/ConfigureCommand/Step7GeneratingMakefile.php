@@ -42,7 +42,7 @@ final class Step7GeneratingMakefile
         	@cd tests/Application && npm run build
         frontend.setup: frontend.install frontend.build
         setup:
-        	@composer update --no-scripts --no-plugins
+        	@composer update
         	@cd tests/Application && bin/console doctrine:database:create --if-not-exists
         	@cd tests/Application && bin/console doctrine:migrations:migrate -n
         	@cd tests/Application && bin/console sylius:fixtures:load -n
