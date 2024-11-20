@@ -30,7 +30,7 @@ final class Step6RenameFiles
         foreach ($filesToBeRenamed as $fileToBeRenamed => $newFileName) {
             $filePath = sprintf('%s/%s', $this->pluginTemplateDir, $fileToBeRenamed);
             $newFilePath = sprintf('%s/%s', $this->pluginTemplateDir, $newFileName);
-            $filesystem->rename($filePath, $newFilePath);
+            $filesystem->rename($filePath, $newFilePath, true);
 
             if ($io->getVerbosity() === OutputInterface::VERBOSITY_DEBUG) {
                 $io->writeln(sprintf('Renamed %s to %s', $filePath, $newFilePath));
