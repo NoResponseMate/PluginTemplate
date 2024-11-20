@@ -42,7 +42,7 @@ final class Step7GeneratingMakefile
         	@cd tests/Application && npm run build
         frontend.setup: frontend.install frontend.build
         setup:
-        	@composer update
+        	@composer update --no-scripts --no-plugins
         	@cd tests/Application && bin/console doctrine:database:create --if-not-exists
         	@cd tests/Application && bin/console doctrine:migrations:migrate -n
         	@cd tests/Application && bin/console sylius:fixtures:load -n
@@ -53,8 +53,8 @@ final class Step7GeneratingMakefile
 
         if ($configuration->buildAssets()) {
             $content .= <<<MAKEFILE
-            @make frontend.setup
-            @cd tests/Application && bin/console assets:install
+                @make frontend.setup
+                @cd tests/Application && bin/console assets:install
             MAKEFILE;
         }
 
